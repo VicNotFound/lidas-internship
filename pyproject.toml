@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lidas"
+version = "0.1.0"
+description = "Lightweight Intrusion Detection System — Year 1 Cybersecurity Capstone"
+requires-python = ">=3.12"
+# No runtime dependencies — standard library only
+dependencies = []
+
+[project.scripts]
+lidas = "lidas.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lidas*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["lidas"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+# Week 3: uncomment fail_under after the full test suite reaches ≥80%.
+# fail_under = 80
+show_missing = true
